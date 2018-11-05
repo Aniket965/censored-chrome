@@ -1,0 +1,14 @@
+{
+    "name": "censor chrome",
+    "version": "1.0",
+    "description": "censors pages",
+    "background": {
+      "scripts": ["src/js/background.js"],
+      "persistent": false
+    },
+    "permissions": ["declarativeContent", "storage"],
+    "page_action": {
+        "default_popup": "src/view/pop.html"
+    },
+    "manifest_version": 2
+  }
