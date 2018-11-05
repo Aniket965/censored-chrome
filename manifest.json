@@ -2,6 +2,14 @@
     "name": "censor chrome",
     "version": "1.0",
     "description": "censors pages",
+    "content_scripts": [
+      {
+        "matches": [
+          "<all_urls>"
+        ],
+        "js": ["src/js/content.js"]
+      }
+    ],
     "background": {
       "scripts": ["src/js/background.js"],
       "persistent": false
