@@ -5,7 +5,7 @@ function gotMessage(message, sender, sendResponse) {
     console.log(message);
     let paragraphs = document.getElementsByTagName('p');
     for (elt of paragraphs) {
-        sendDataToAws(elt.innerHTML)
+        sendDataToAws(elt.textContent)
     }
     let images = document.getElementsByTagName('img');
     for(img of images) {
@@ -13,9 +13,39 @@ function gotMessage(message, sender, sendResponse) {
     }
 }
 
+let score_matric = {
+    "NEUTRAL": 0,
+    "NEGATIVE":-1,
+    "POSITIVE":1,
+    "MIXED":0
+}
+
+let score = 0;
 
 function sendDataToAws(data) {
-    console.log(`📃 :==> ${data}`)
+let headers = new Headers()
+  headers.append('Content-Type', 'application/json')
+    fetch('https://fs22b8rq04.execute-api.us-east-1.amazonaws.com/Prod/',{
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify({
+            "elements": [
+                {
+                    "type": "text",
+                    "content": data
+                }
+            ]
+        })
+      }).then(data => {
+          data.json().then(d => {
+              score += score_matric[d.message[0].score]
+              console.log(d.message,score)
+              chrome.runtime.sendMessage({
+                score: score // or whatever you want to send
+            
+              });
+          })
+      }).catch(err => console.log(err))
 }
 function sendImgsToAws(data) {
     console.log(`🌄 :==> ${data}`)

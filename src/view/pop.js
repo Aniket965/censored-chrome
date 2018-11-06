@@ -19,28 +19,26 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     
 }, false);
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse){
+       let ele = document.getElementById('score')
+       let score = request.score 
+
+       if (score > 0) {
+        ele.classList.add("positive");
+        ele.classList.remove("neutral")
+        ele.classList.remove("negative")
+       }else if (score === 0) {
+        ele.classList.add("neutral");
+        ele.classList.remove("positive")
+        ele.classList.remove("negative")
+       }else {
+        ele.classList.add("negative");
+        ele.classList.remove("neutral");
+        ele.classList.remove("positive");
+       }
+       ele.innerHTML = `Score: ${request.score}`
+    }
+);
 
 
-
-// Add event listener for mouseup (there is no event for selection)
-document.addEventListener('mouseup', highlightSelectedBlock, false)
-
-function highlightSelectedBlock () {
-  // TODO Filter only selections
-
-  // Get Node where selection starts
-  let elementWhereSelectionStart = window.getSelection().anchorNode
-
-  // TODO Get Node where selection ends with Selection.focusNode()
-  // TODO Get Nodes in between start and end of selection
-
-  // I've hardcoded finding closest block element for a simplicity
-  let closestBlockElement = elementWhereSelectionStart.parentNode
-
-  // Add non disturbing border to selected elements
-  // For simplicity I've adding outline only for the start element
-  closestBlockElement.style.outline = '1px solid blue'
-  
-  // TODO Clear outline on some event: saving selection, ending selection etc
-  setTimeout(() => { closestBlockElement.style.outline = 'none' }, 2000)
-}
