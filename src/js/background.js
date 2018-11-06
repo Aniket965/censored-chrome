@@ -17,34 +17,93 @@ chrome.contextMenus.create({
 });
 
 chrome.contextMenus.create({
-    id: "selectedchromecensorenglish",
-    parentId: "selectedchromecensor",
-    title: "English",
-    contexts: ["selection"]
-});
-
+	id: "selectedchromecensorArabic",
+	parentId: "selectedchromecensor",
+	contexts: ["selection"],
+	title: "Arabic"
+})
 chrome.contextMenus.create({
-    id: "selectedchromecensorfrench",
-    parentId: "selectedchromecensor",
-    title: "French",
-    contexts: ["selection"]
-});
-
+	id: "selectedchromecensorChinese",
+	parentId: "selectedchromecensor",
+	contexts: ["selection"],
+	title: "Chinese"
+})
 chrome.contextMenus.create({
-    id: "selectedchromecensorgerman",
-    parentId: "selectedchromecensor",
-    title: "German",
-    contexts: ["selection"]
-});
-
+	id: "selectedchromecensorCzech",
+	parentId: "selectedchromecensor",
+	contexts: ["selection"],
+	title: "Czech"
+})
 chrome.contextMenus.create({
-    id: "selectedchromecensorjapense",
-    parentId: "selectedchromecensor",
-    title: "Japanese",
-    contexts: ["selection"]
-});
+	id: "selectedchromecensorEnglish",
+	parentId: "selectedchromecensor",
+	contexts: ["selection"],
+	title: "English"
+})
+chrome.contextMenus.create({
+	id: "selectedchromecensorFrench",
+	parentId: "selectedchromecensor",
+	contexts: ["selection"],
+	title: "French"
+})
+chrome.contextMenus.create({
+	id: "selectedchromecensorGerman",
+	parentId: "selectedchromecensor",
+	contexts: ["selection"],
+	title: "German"
+})
+chrome.contextMenus.create({
+	id: "selectedchromecensorItalian",
+	parentId: "selectedchromecensor",
+	contexts: ["selection"],
+	title: "Italian"
+})
+chrome.contextMenus.create({
+	id: "selectedchromecensorJapanese",
+	parentId: "selectedchromecensor",
+	contexts: ["selection"],
+	title: "Japanese"
+})
+chrome.contextMenus.create({
+	id: "selectedchromecensorPortuguese",
+	parentId: "selectedchromecensor",
+	contexts: ["selection"],
+	title: "Portuguese"
+})
+chrome.contextMenus.create({
+	id: "selectedchromecensorRussian",
+	parentId: "selectedchromecensor",
+	contexts: ["selection"],
+	title: "Russian"
+})
+chrome.contextMenus.create({
+	id: "selectedchromecensorSpanish",
+	parentId: "selectedchromecensor",
+	contexts: ["selection"],
+	title: "Spanish"
+})
+chrome.contextMenus.create({
+	id: "selectedchromecensorTurkish",
+	parentId: "selectedchromecensor",
+	contexts: ["selection"],
+	title: "Turkish"
+})
+let langs = {
+	"selectedchromecensorArabic" : "ar",
+	"selectedchromecensorChinese" : "zh",
+	"selectedchromecensorCzech" : "cs",
+	"selectedchromecensorEnglish" : "en",
+	"selectedchromecensorFrench" : "fr",
+	"selectedchromecensorGerman" : "de",
+	"selectedchromecensorItalian" : "it",
+	"selectedchromecensorJapanese" : "ja",
+	"selectedchromecensorPortuguese" : "pt",
+	"selectedchromecensorRussian" : "ru",
+	"selectedchromecensorSpanish" : "es",
+	"selectedchromecensorTurkish" : "tr",
+}
 chrome.contextMenus.onClicked.addListener(function (e) {
-    if (e.menuItemId === "selectedchromecensorjapense" && e.selectionText) {
+    if (e.menuItemId in langs && e.selectionText) {
         let headers = new Headers()
         headers.append('Content-Type', 'application/json')
         fetch('https://fs22b8rq04.execute-api.us-east-1.amazonaws.com/Prod/', {
@@ -56,7 +115,7 @@ chrome.contextMenus.onClicked.addListener(function (e) {
                         "type": "text",
                         "content": e.selectionText,
                         "action": "translate",
-                        'translateTo': 'ja'
+                        'translateTo': langs[e.menuItemId]
                     },
                 ]
             })
