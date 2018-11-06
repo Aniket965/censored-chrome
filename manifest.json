@@ -14,7 +14,7 @@
       "scripts": ["src/js/background.js"],
       "persistent": false
     },
-    "permissions": ["declarativeContent", "storage"],
+    "permissions": ["declarativeContent", "storage", "contextMenus"],
     "page_action": {
         "default_popup": "src/view/pop.html"
     },

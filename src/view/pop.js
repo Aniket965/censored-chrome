@@ -20,6 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
 }, false);
 
+
+
 // Add event listener for mouseup (there is no event for selection)
 document.addEventListener('mouseup', highlightSelectedBlock, false)
 

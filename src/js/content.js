@@ -13,6 +13,7 @@ function gotMessage(message, sender, sendResponse) {
     }
 }
 
+
 function sendDataToAws(data) {
     console.log(`📃 :==> ${data}`)
 }
