@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     let el = document.getElementById('mk');
-    el.addEventListener('click',e => {
+    el.addEventListener('click', e => {
         let params = {
             active: true,
             currentWindow: true
@@ -17,27 +17,27 @@ document.addEventListener('DOMContentLoaded', () => {
             chrome.tabs.sendMessage(tabs[0].id, msg);
         }
     })
-    
+
 }, false);
 chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse){
-       let ele = document.getElementById('score')
-       let score = request.score 
+    function (request, sender, sendResponse) {
+        let ele = document.getElementById('score')
+        let score = request.score
 
-       if (score > 0) {
-        ele.classList.add("positive");
-        ele.classList.remove("neutral")
-        ele.classList.remove("negative")
-       }else if (score === 0) {
-        ele.classList.add("neutral");
-        ele.classList.remove("positive")
-        ele.classList.remove("negative")
-       }else {
-        ele.classList.add("negative");
-        ele.classList.remove("neutral");
-        ele.classList.remove("positive");
-       }
-       ele.innerHTML = `Score: ${request.score}`
+        if (score > 0) {
+            ele.classList.add("positive");
+            ele.classList.remove("neutral")
+            ele.classList.remove("negative")
+        } else if (score === 0) {
+            ele.classList.add("neutral");
+            ele.classList.remove("positive")
+            ele.classList.remove("negative")
+        } else {
+            ele.classList.add("negative");
+            ele.classList.remove("neutral");
+            ele.classList.remove("positive");
+        }
+        ele.innerHTML = `Score: ${request.score}`
     }
 );
 

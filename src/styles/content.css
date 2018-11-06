@@ -57,3 +57,6 @@
 .n__cc{
   box-shadow: inset 0px -7px 0px 0px #fffb06 !important;
 }
+.cc__blur {
+  filter: blur(30px);
+}

@@ -9,7 +9,7 @@ function gotMessage(message, sender, sendResponse) {
     }
     let images = document.getElementsByTagName('img');
     for(img of images) {
-       sendImgsToAws(img.src)
+       sendImgsToAws(img)
     }
 }
 
@@ -47,8 +47,30 @@ let headers = new Headers()
           })
       }).catch(err => console.log(err))
 }
-function sendImgsToAws(data) {
-    console.log(`🌄 :==> ${data}`)
+function sendImgsToAws(img) {
+    // console.log(`🌄 :==> ${data}`)
+    let headers = new Headers()
+  headers.append('Content-Type', 'application/json')
+    fetch('https://fs22b8rq04.execute-api.us-east-1.amazonaws.com/Prod/',{
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify({
+            "elements": [
+                {
+                    "type": "image",
+                    "content": img.src
+                }
+            ]
+        })
+      }).then(data => {
+          data.json().then(d => {
+              let m = d.message[0];
+              if(m.score == "UNSAFE")
+                img.classList.add('cc__blur')
+
+          })
+      }).catch(err => console.log(err))
+  
 }
 
 // Add bubble to the top of the page.
