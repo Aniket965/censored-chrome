@@ -11,3 +11,49 @@
     "Droid Sans", "Helvetica Neue", sans-serif !important;
     font-weight: bold;
   }
+.tooltip__cc {
+  visibility: hidden;
+  position: absolute;
+  background: white;
+  max-width: 400px;
+  box-shadow: 3px 3px 18px #d9d9d9a8;
+  padding: 1rem;
+  top: 0;
+  left: 0;
+  font-size: 1.4rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+  "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif !important;
+  color: #787272;
+}
+.tooltip__cc:before{
+  content:'';
+  display:block;
+  width:0;
+  height:0;
+  position:absolute;
+
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right:8px solid black;
+  left:-8px;
+
+  top:7px;
+}
+.tooltip__cc span {
+  box-shadow: inset 0px -7px 0px 0px #06ff70;
+  border-top: 1px solid #ededed;
+  font-size: 1.2rem;
+  margin-top:0.4rem;
+  color: black;
+
+}
+.p__cc {
+  box-shadow: inset 0px -7px 0px 0px #06ff70;
+}
+.r__cc {
+  box-shadow: inset 0px -7px 0px 0px #ff0e06!important;
+}
+.n__cc{
+  box-shadow: inset 0px -7px 0px 0px #fffb06 !important;
+}
