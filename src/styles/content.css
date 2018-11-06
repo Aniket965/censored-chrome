@@ -1,15 +1,16 @@
 .selection_bubble {
     visibility: hidden;
     position: absolute;
-    color:white;
+    color: #787272;
+    font-family: 1.4rem;
     padding: 1rem;
     top: 0;
     left: 0;
-    background:#7543ff;
+    background:white;
+    box-shadow: 3px 3px 18px #d9d9d9a8;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
     "Droid Sans", "Helvetica Neue", sans-serif !important;
-    font-weight: bold;
   }
 .tooltip__cc {
   visibility: hidden;
