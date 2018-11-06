@@ -1,0 +1,13 @@
+.selection_bubble {
+    visibility: hidden;
+    position: absolute;
+    color:white;
+    padding: 1rem;
+    top: 0;
+    left: 0;
+    background:#7543ff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif !important;
+    font-weight: bold;
+  }
